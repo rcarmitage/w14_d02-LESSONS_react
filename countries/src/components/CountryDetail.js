@@ -4,6 +4,7 @@ const CountryDetail = (props) => {
   if (!props.country) return null;
   return (
     <>
+    {/* Could use <Fragment> */}
       <h3>{props.country.name}</h3>
       <p>Capital: {props.country.capital}</p>
       <p>Demonym: {props.country.demonym}</p>
