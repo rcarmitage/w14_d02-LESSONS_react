@@ -1,12 +1,12 @@
 import React from 'react';
-import SongItem from './SongsItem';
+import SongsItem from './SongsItem';
 
 const SongsList = ({data}) => {
   const songNodes = data.map(song => {
     return (
-      <Song>
+      <SongsItem>
         {song.title}
-      </Song>
+      </SongsItem>
     );
   });
 
