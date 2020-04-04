@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SongItem = ({title}) => (
+const Song = ({title}) => (
   <div className="song">
     <p>{title}</p>
   </div>
 );
 
-export default SongItem;
+export default Song;

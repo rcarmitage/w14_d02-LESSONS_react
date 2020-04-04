@@ -1,12 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SongsContainer from './containers/SongsContainer';
 
-class App extends Component {
-  render() {
-    return (
-      <SongsContainer />
-    );
-  }
+function App() {
+  return <SongsContainer />
 }
 
 export default App;

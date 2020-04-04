@@ -1,6 +1,6 @@
 import React from 'react';
 import SongsList from '../components/SongsList';
-import SongsItem from '../components/SongsItem';
+import Song from '../components/Song';
 
 class SongsContainer extends React.Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class SongsContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="songs-container">
         <h4>UK Top 40</h4>
         <SongsList songs={this.state.songs} />
       </div>
