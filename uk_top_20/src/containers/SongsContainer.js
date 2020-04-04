@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import SongsList from '../components/SongsList';
 import Song from '../components/Song';
 
-class SongsContainer extends React.Component {
+class SongsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
