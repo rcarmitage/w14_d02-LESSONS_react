@@ -1,29 +1,51 @@
 import React, { Component } from 'react';
 import SongsList from '../components/SongsList';
 import Song from '../components/Song';
+import Titlebar from '../components/TitleBar';
 
 class SongsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       songs: []
-    };
+    }
+    this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handlePlayPause = this.handlePlayPause.bind(this);
   }
 
   componentDidMount() {
-    const url = 'https://itunes.apple.com/gb/rss/topsongs/limit=20/json';
+    this.loadSongs(this.props.genre[0].url)
+  }
 
+  loadSongs(url) {
     fetch(url)
       .then(res => res.json())
-      .then(songs => this.setState({songs: songs}))
+      .then(songsList => this.setState({ songs: songsList.feed.entry }))
       .catch(err => console.error);
+  }
+
+  handlePlayPause(audio) {
+    audio.paused ? audio.play() : audio.pause();
+    audio.classList.toggle('playing');
+  }
+
+  handleSelectChange(event) {
+    this.loadSongs(event.target.value);
   }
 
   render() {
     return (
       <div className="songs-container">
-        <h4>UK Top 40</h4>
-        <SongsList songs={this.state.songs} />
+        <Titlebar
+          handleSelectChange={this.handleSelectChange}
+          genres={this.props.genres}
+        />
+        <SongsList
+          songs={this.state.songs}
+          url={this.props.genres[0].url}
+          handleSelectChange={this.handleSelectChange}
+          handlePlayPause={this.handlePlayPause}
+        />
       </div>
     );
   }
